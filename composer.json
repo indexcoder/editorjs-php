@@ -1,12 +1,12 @@
 {
-    "name": "codex-team/editor.js",
+    "name": "nurs/editor.js",
     "type": "library",
     "description": "PHP backend implementation for the Editor.js",
     "license": "MIT",
     "authors": [
         {
-            "name": "CodeX Team",
-            "email": "team@ifmo.su"
+            "name": "Nurs Dev",
+            "email": "programmer.kg@mail.ru"
         }
     ],
     "require": {
