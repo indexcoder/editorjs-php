@@ -96,21 +96,27 @@ class EditorJS
         $this->validateBlocks();
     }
 
+    public function getBlock($block) {  
+        return $this->handler->sanitizeBlock(
+            $block['type'],
+            $block['data'],
+            $block["tunes"] ?? []
+        );
+    }
+
     /**
      * Sanitize and return array of blocks according to the Handler's rules.
      *
      * @return array
      */
-    public function getBlocks()
-    {
+    public function getBlocks() {
+
         $sanitizedBlocks = [];
 
         foreach ($this->blocks as $block) {
-            $sanitizedBlock = $this->handler->sanitizeBlock(
-                $block['type'],
-                $block['data'],
-                $block["tunes"] ?? []
-            );
+            
+            $sanitizedBlock = $this->getBlock($block);
+
             if (!empty($sanitizedBlock)) {
                 array_push($sanitizedBlocks, $sanitizedBlock);
             }
@@ -118,6 +124,8 @@ class EditorJS
 
         return $sanitizedBlocks;
     }
+
+  
 
     public function getFilteringBlocks($names = []) {
        
@@ -127,11 +135,7 @@ class EditorJS
 
             if (in_array($block['type'], $names)) {
 
-                $sanitizedBlock = $this->handler->sanitizeBlock(
-                    $block['type'],
-                    $block['data'],
-                    $block["tunes"] ?? []
-                );
+                $sanitizedBlock = $this->getBlock($block);
 
                 if (!empty($sanitizedBlock)) {
                     array_push($sanitizedBlocks, $sanitizedBlock);
@@ -148,14 +152,12 @@ class EditorJS
      *
      * @return bool
      */
-    private function validateBlocks()
-    {
+    private function validateBlocks() {
         foreach ($this->blocks as $block) {
             if (!$this->handler->validateBlock($block['type'], $block['data'])) {
                 return false;
             }
         }
-
         return true;
     }
 }
