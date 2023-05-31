@@ -44,6 +44,13 @@ Editor.js constructor has the following arguments:
 
 `$configuration` — JSON string with CodeX Editor tools configuration (see an example in the following paragraph).
 
+
+# Added new method for block filtering
+
+```php  
+  $blocks = $editor->getFilteringBlocks(['header','imaged']);    
+```
+
 # Configuration file
 
 You can manually configure validation rules for different types of Editor.js tools (header, paragraph, list, quote and other).
