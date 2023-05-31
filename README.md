@@ -278,6 +278,6 @@ If you connect a new Tool on the frontend-side, then you should create a configu
 <a href="https://github.com/indexcoder/editorjs-php/">https://github.com/indexcoder/editorjs-php</a>
 
 
-## About CodeX
-We are small team of Web-developing fans consisting of IFMO students and graduates located in St. Petersburg, Russia. 
+## About Me
+We are small team of Web-developing fans consisting of JAGU students and graduates located in St. Jalal-Abad, Kyrgyzstan. 
 Feel free to give us a feedback on <a href="mailto::programmer.kg@mail.ru">programmer.kg@mail.ru</a>
