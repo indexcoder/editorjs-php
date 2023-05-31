@@ -275,9 +275,9 @@ Another configuration example: [/tests/samples/test-config.json](/tests/samples/
 If you connect a new Tool on the frontend-side, then you should create a configuration rule for that Tool to validate it on server-side.
 
 ## Repository 
-<a href="https://github.com/codex-editor/editorjs-php/">https://github.com/codex-editor/editorjs-php/</a>
+<a href="https://github.com/indexcoder/editorjs-php/">https://github.com/indexcoder/editorjs-php</a>
 
 
 ## About CodeX
 We are small team of Web-developing fans consisting of IFMO students and graduates located in St. Petersburg, Russia. 
-Feel free to give us a feedback on <a href="mailto::team@ifmo.su">team@ifmo.su</a>
+Feel free to give us a feedback on <a href="mailto::programmer.kg@mail.ru">programmer.kg@mail.ru</a>
