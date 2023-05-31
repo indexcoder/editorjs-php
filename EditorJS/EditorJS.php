@@ -125,27 +125,34 @@ class EditorJS
         return $sanitizedBlocks;
     }
 
-  
 
     public function getFilteringBlocks($names = []) {
-       
+
         $sanitizedBlocks = [];
+
+        $types = [];
 
         foreach ($this->blocks as $block) {
 
-            if (in_array($block['type'], $names)) {
+            $type = $block['type'];
+            
+            if (in_array($type, $names) && !in_array($type, $types)) {
 
                 $sanitizedBlock = $this->getBlock($block);
 
                 if (!empty($sanitizedBlock)) {
                     array_push($sanitizedBlocks, $sanitizedBlock);
-                }            
-            }
-            
-        }
+                }
 
+                $types[] = $type;
+
+            }
+
+        }
+        
         return $sanitizedBlocks;
     }
+  
 
     /**
      * Validate blocks structure according to the Handler's rules.
