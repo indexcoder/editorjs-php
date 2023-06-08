@@ -48,7 +48,7 @@ Editor.js constructor has the following arguments:
 # Added new method for block filtering
 
 ```php  
-  $blocks = $editor->getFilteringBlocks(['header','imaged']);    
+  $blocks = $editor->getFilteringBlocks(['header','image']);    
 ```
 
 # Configuration file
