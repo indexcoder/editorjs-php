@@ -127,29 +127,25 @@ class EditorJS
 
 
     public function getFilteringBlocks($names = []) {
-
         $sanitizedBlocks = [];
-
         $types = [];
-
         foreach ($this->blocks as $block) {
-
             $type = $block['type'];
-            
             if (in_array($type, $names) && !in_array($type, $types)) {
-
                 $sanitizedBlock = $this->getBlock($block);
-
-                if (!empty($sanitizedBlock)) {
-                    array_push($sanitizedBlocks, $sanitizedBlock);
+                if (!empty($sanitizedBlock)) {                    
+                    if ($sanitizedBlock['type'] == 'header' || $sanitizedBlock['type'] == 'paragraph') {
+                        if (!empty($sanitizedBlock['data']['text'])) {
+                            array_push($sanitizedBlocks, $sanitizedBlock);
+                            $types[] = $type;
+                        }
+                    } else {
+                        array_push($sanitizedBlocks, $sanitizedBlock);
+                        $types[] = $type;
+                    }
                 }
-
-                $types[] = $type;
-
             }
-
-        }
-        
+        }        
         return $sanitizedBlocks;
     }
   
