@@ -125,18 +125,25 @@ class EditorJS
         return $sanitizedBlocks;
     }
 
-
     public function getFilteringBlocks($names = []) {
+
         $sanitizedBlocks = [];
+
         $types = [];
+
         foreach ($this->blocks as $block) {
+
             $type = $block['type'];
+
             if (in_array($type, $names) && !in_array($type, $types)) {
+
                 $sanitizedBlock = $this->getBlock($block);
-                if (!empty($sanitizedBlock)) {                    
+
+                if (!empty($sanitizedBlock)) {
                     if ($sanitizedBlock['type'] == 'header' || $sanitizedBlock['type'] == 'paragraph') {
                         if (!empty($sanitizedBlock['data']['text'])) {
-                            array_push($sanitizedBlocks, $sanitizedBlock);
+                            $sanitizedBlock['data']['text'] = self::removeHTMLTags($sanitizedBlock['data']['text']);
+                            array_push($sanitizedBlocks,  $sanitizedBlock);
                             $types[] = $type;
                         }
                     } else {
@@ -145,10 +152,30 @@ class EditorJS
                     }
                 }
             }
-        }        
+        }
+
         return $sanitizedBlocks;
+
     }
   
+    private static function removeHTMLTags($text) {
+        if ($text === '') {
+            return $text; // Return early if the text is empty
+        }
+
+        // Improved regular expression for HTML tag removal
+        $pattern = '/<[^>]*>/';
+        $result = preg_replace($pattern, '', $text);
+
+        if ($result === null) {
+            // Handle regex errors
+            throw new Exception("Regular expression error");
+        }
+
+        return $result;
+    }
+
+
 
     /**
      * Validate blocks structure according to the Handler's rules.
